@@ -22,6 +22,22 @@ this is my first article.this is my first article.this is my first article.this 
 </p>
 `
 };
+
+var articleTwo={
+    title: 'Article Two | Naresh',
+heading:'Article Two',
+date:'10 Feb, 2017',
+content:`
+<p>
+this is my second article.
+this is my second article.
+this is my second article.
+this is my second article.
+this is my second article.
+</p>
+`
+};
+
 function createTemplate(data) {
     var title=data.title;
     var date=data.date;
@@ -71,7 +87,7 @@ app.get('/article-one', function (req, res) {
 });
 
 app.get('/article-two', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
+  res.send(createtemplate(articleTwo));
 });
 
 
