@@ -12,6 +12,51 @@ app.get('/', function (req, res) {
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+var articleOne={
+    title: 'Article one | Naresh',
+heading:'Article One',
+date:'5 Feb, 2017',
+content:`
+<p>
+this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.
+</p>
+`
+};
+
+var htmlTemplate=`
+<html>
+<head>
+    <title>
+        ${title}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+
+ <link href="/ui/style.css" rel="stylesheet" />
+</head>
+
+<BODY>
+    <div class="container">
+        <div>
+            <a href="/">Home</a>
+    </div>
+     <div>
+${heading}
+   </div>
+  
+  <div>
+${date}
+  </div>
+
+<div>
+${content}
+</div>
+</div>
+</BODY>
+
+</html>
+
+`    ;
 
 app.get('/article-one', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
