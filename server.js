@@ -87,7 +87,7 @@ app.get('/article-one', function (req, res) {
 });
 
 app.get('/article-two', function (req, res) {
-  res.send(createtemplate(articleTwo));
+  res.send(createTemplate(articleTwo));
 });
 
 
