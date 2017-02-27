@@ -12,7 +12,8 @@ app.get('/', function (req, res) {
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-var articleOne={
+var articles={
+articleOne:{
     title: 'Article one | Naresh',
 heading:'Article One',
 date:'5 Feb, 2017',
@@ -21,10 +22,10 @@ content:`
 this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.this is my first article.
 </p>
 `
-};
+},
 
-var articleTwo={
-    title: 'Article Two | Naresh',
+ articleTwo:{
+title: 'Article Two | Naresh',
 heading:'Article Two',
 date:'10 Feb, 2017',
 content:`
@@ -35,7 +36,7 @@ this is my second article.
 this is my second article.
 this is my second article.
 </p>
-`
+`}
 };
 
 function createTemplate(data) {
