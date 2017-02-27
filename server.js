@@ -22,6 +22,11 @@ this is my first article.this is my first article.this is my first article.this 
 </p>
 `
 };
+function createTemplate(data) {
+    var title=data.title;
+    var date=data.date;
+    var heading =data.heading;
+    var content=data.content;
 
 var htmlTemplate=`
 <html>
@@ -56,7 +61,10 @@ ${content}
 
 </html>
 
-`    ;
+`;
+return htmlTemplate;
+    
+}
 
 app.get('/article-one', function (req, res) {
   res.send(createTemplate(articleOne));
