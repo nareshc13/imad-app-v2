@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 var articles={
-articleOne:{
+'article-one':{
     title: 'Article one | Naresh',
 heading:'Article One',
 date:'5 Feb, 2017',
@@ -24,7 +24,7 @@ this is my first article.this is my first article.this is my first article.this 
 `
 },
 
- articleTwo:{
+ 'article-two':{
 title: 'Article Two | Naresh',
 heading:'Article Two',
 date:'10 Feb, 2017',
@@ -83,8 +83,8 @@ return htmlTemplate;
     
 }
 
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleOne));
+app.get('/:articleName', function (req, res) {
+  res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/article-two', function (req, res) {
