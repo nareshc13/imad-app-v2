@@ -115,6 +115,11 @@ app.get('/counter', function(req,res){
    res.send(counter.toString());
 });
 
+
+app.get('/article-two', function (req, res) {
+  res.send(createTemplate(articleTwo));
+});
+
 app.get('/articles/:articleName', function (req, res) {
 //  var articleName=req.params.articleName;
   res.send(createTemplate(articleData));
@@ -133,10 +138,6 @@ app.get('/articles/:articleName', function (req, res) {
      }
   });
   
-});
-
-app.get('/article-two', function (req, res) {
-  res.send(createTemplate(articleTwo));
 });
 
 
