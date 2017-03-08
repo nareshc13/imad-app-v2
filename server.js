@@ -11,8 +11,8 @@ var config={
     user:'nareshc13',
     database:'nareshc13',
     host:'db.imad.hasura-app.io',
-    password:process.env.DB_PASSWORD,
     port:'5432',
+    password: process.env.DB_PASSWORD
 };
 
 app.get('/', function (req, res) {
