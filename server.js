@@ -93,7 +93,7 @@ ${heading}
    </div>
   
   <div>
-${date.toDate()}
+${date.toDateString()}
   </div>
 
 <div>
