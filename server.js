@@ -15,13 +15,8 @@ var config={
     password: process.env.DB_PASSWORD
 };
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
-});
-
-
 var pool=new Pool(config);
-app.get('/test-db',function(req,res){
+app.get('/test-db', function(req, res){
    pool.query('SELECT * FROM test', function(err,result){
       if(err){
           res.status(500).send(err.toString());
@@ -32,6 +27,13 @@ app.get('/test-db',function(req,res){
    });
    
 });
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
+
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
