@@ -63,13 +63,13 @@ app.post('/login', function(req, res){
     var password=req.body.password;
    
     var dbString= hash(password,salt);
-    pool.query('SELECT * FROM "user" (username,password) VALUES ($1,$2)',[username,dbString], function(err, result){
+    pool.query('SELECT * FROM "user" WHERE username=$1',[username], function(err, result){
         if(err){
             res.status(500).send(err.toString());
             }
             else {
              if(result.rows.length===0) {
-                res.send(400).send('username/password invalid');
+                res.send(403).send('username/password invalid');
             }
             else {
                 var dbString=result.rows[0].password;
