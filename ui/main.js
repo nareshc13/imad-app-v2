@@ -9,7 +9,7 @@ submit.onclick= function() {
         } else if(request.status===403) {
     alert('username/password is invalid');
         }  else if(request.status===500){
-            alert('something went wrong on server')
+            alert('something went wrong on server');
         }
         }  
   };
