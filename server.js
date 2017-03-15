@@ -8,7 +8,7 @@ var bodyParser= require('body-parser');
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use(seesion({
+app.use(session({
     secret:'secretRandomValue',
     cookie: {maxAge: 1000*60*60*24*30}
 }));
