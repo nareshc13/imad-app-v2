@@ -8,6 +8,10 @@ var bodyParser= require('body-parser');
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(seesion({
+    secret:'secretRandomValue',
+    cookie: {maxAge: 1000*60*60*24*30}
+}));
 
 var config={
     user:'nareshc13',
@@ -76,7 +80,13 @@ app.post('/login', function(req, res){
                  var hashedPassword=hash(password,salt);
                  
                  if(hashedPassword===dbString){
-                     res.send('user credentials correct!');
+                     
+                //set session
+                req.session.auth={userId:result.rows[0].id};
+                
+                //set cookie
+                  
+                    res.send('user credentials correct!');
                  }
                  else
                  {
@@ -86,6 +96,19 @@ app.post('/login', function(req, res){
             }
             });
         });
+
+app.get('/check-login', function(req,res){
+   if(req.session && req.session.auth && req.session.auth.userId){
+       res.send('you are logged in'+ req.session.auth.userId.toString());
+   } else {
+       res.send('you are not logged in');
+   }
+});
+
+app.get('/logout', function(req,res){
+   delete req.session.auth;
+   res.send('logged out');
+});
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
